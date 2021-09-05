@@ -1,7 +1,7 @@
 /** @format */
 
 module.exports = {
-  trailingComma: "es5",
+  trailingComma: "all",
   tabWidth: 2,
   semi: true,
   singleQuote: false,
