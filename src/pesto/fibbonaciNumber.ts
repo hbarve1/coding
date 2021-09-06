@@ -10,7 +10,7 @@ function memoFibbNumber(): (n: number) => number {
   const list: number[] = [1, 1];
 
   return function fibbNumber(n: number): number {
-    if (n < 1) throw new Error("Invalid Input");
+    // if (n < 1) throw new Error("Invalid Input");
 
     if (typeof list[n - 1] !== "undefined") return list[n - 1];
 
@@ -20,6 +20,4 @@ function memoFibbNumber(): (n: number) => number {
   };
 }
 
-export const fibbonaciNumber2 = memoFibbNumber();
-
-export default fibbonaciNumber2;
+export const memoFibbonaciNumber = memoFibbNumber();
