@@ -1,5 +1,16 @@
 /** @format */
 
+/**
+
+const input =“hellooooloo”;
+
+function getRepeated() {}
+
+const op = getRepeated(input);
+console.log(op) // [(2,3), (4,7), (9,10)]
+
+ */
+
 function getRepeatedCharInString(s: string): number[][] {
   let prevIndex = 0;
   let count = 0;
