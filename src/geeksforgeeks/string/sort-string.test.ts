@@ -1,10 +1,17 @@
 /** @format */
 
-import sortString from "./sort-string";
+import { sortString, sortString2 } from "./sort-string";
 
 describe("", () => {
-  test("", () => {
+  test("sortString", () => {
     expect(sortString(2, ["bbccdefbbaa", "geeksforgeeks"])).toStrictEqual([
+      "aabbbbccdef",
+      "eeeefggkkorss",
+    ]);
+  });
+
+  test("sortString2", () => {
+    expect(sortString2(2, ["bbccdefbbaa", "geeksforgeeks"])).toStrictEqual([
       "aabbbbccdef",
       "eeeefggkkorss",
     ]);

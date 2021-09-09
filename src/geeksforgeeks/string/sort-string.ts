@@ -40,7 +40,7 @@ function sort(str: string): string {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function sortString(int: number, array: string[]): string[] {
+export function sortString(int: number, array: string[]): string[] {
   const results: string[] = [];
 
   for (let i = 0; i < int; i += 1) {
@@ -51,7 +51,7 @@ function sortString(int: number, array: string[]): string[] {
 }
 
 // NOTE: this is more optimised solution of this kind of problems
-function sortString2(n: number, arrayOfString: string[]): string[] {
+export function sortString2(n: number, arrayOfString: string[]): string[] {
   const results = [];
 
   function sorting(str: string): string {
