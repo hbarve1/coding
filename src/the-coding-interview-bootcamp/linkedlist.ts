@@ -31,34 +31,27 @@ export class LinkedList {
   }
 
   insertLast(data: DataType): void {
-    if (!this.head) {
+    const last = this.getLast();
+
+    if (last) {
+      // There are some existing nodes in our chain
+      last.next = new Node(data);
+    } else {
+      // The chain is empty!
       this.head = new Node(data);
-      return;
     }
-
-    let cursor = this.head;
-
-    while (cursor.next) {
-      cursor = cursor.next;
-    }
-
-    cursor.next = new Node(data);
   }
 
   size(): number {
-    let size = 0;
-    let cursor = this.head;
+    let counter = 0;
+    let node = this.head;
 
-    if (cursor) {
-      size = 1;
+    while (node) {
+      counter += 1;
+      node = node.next;
     }
 
-    while (cursor?.next) {
-      size += 1;
-      cursor = cursor.next;
-    }
-
-    return size;
+    return counter;
   }
 
   getFirst(): Node | null {
@@ -82,9 +75,7 @@ export class LinkedList {
   removeFirst(): void {
     if (!this.head) return;
 
-    const nextHead = this.head.next;
-
-    this.head = nextHead;
+    this.head = this.head.next;
   }
 
   removeLast(): void {
@@ -104,74 +95,55 @@ export class LinkedList {
     cursor.next = null;
   }
 
-  getAt(at: number): Node | null {
-    if (!this.head) return null;
-    if (at === 0) return this.head;
+  getAt(index: number): Node | null {
+    let counter = 0;
+    let node = this.head;
 
-    let count = 0;
-    let cursor = this.head;
+    while (node) {
+      if (counter === index) {
+        return node;
+      }
 
-    while (cursor.next) {
-      count += 1;
-      cursor = cursor.next;
-
-      if (count === at) return cursor;
+      counter += 1;
+      node = node.next;
     }
 
     return null;
   }
 
-  removeAt(at: number): void {
+  removeAt(index: number): void {
     if (!this.head) return;
 
-    if (at === 0) {
+    if (index === 0) {
       this.head = this.head.next;
       return;
     }
 
-    let count = 0;
-    let prevNode = null;
-    let cursor = this.head;
+    const previous = this.getAt(index - 1);
 
-    while (cursor.next) {
-      count += 1;
-      prevNode = cursor;
-      cursor = cursor.next;
-
-      if (count === at) {
-        prevNode.next = cursor.next;
-        return;
-      }
+    if (!previous || !previous.next) {
+      return;
     }
+
+    previous.next = previous.next.next;
   }
 
-  insertAt(data: DataType, at: number): void {
+  insertAt(data: DataType, index: number): void {
     if (!this.head) {
       this.head = new Node(data);
       return;
     }
 
-    if (at === 0) {
+    if (index === 0) {
       this.head = new Node(data, this.head);
       return;
     }
 
-    let count = 0;
-    let prevNode = null;
-    let cursor = this.head;
-
-    while (cursor.next) {
-      count += 1;
-      prevNode = cursor;
-      cursor = cursor.next;
-
-      if (count === at) {
-        prevNode.next = new Node(data, cursor);
-        return;
-      }
-    }
-
-    cursor.next = new Node(data);
+    const previous = this.getAt(index - 1) || this.getLast();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const node = new Node(data, previous!.next);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    previous!.next = node;
   }
 
   forEach(fn: (node: Node | null, index: number) => unknown): void {
