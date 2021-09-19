@@ -2,7 +2,7 @@
 
 import commonChild from "./common-child";
 
-describe("special-palindrome-again", () => {
+describe("common child", () => {
   test("Test 1", () => {
     expect(commonChild("ABCD", "ABDCE")).toBe(3);
   });
