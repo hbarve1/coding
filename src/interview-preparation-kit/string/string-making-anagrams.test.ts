@@ -2,7 +2,7 @@
 
 import makingAnagrams from "./string-making-anagrams";
 
-describe("2d Array DS: Hour Glass", () => {
+describe("string-making-anagrams", () => {
   test("Test 1", () => {
     expect(makingAnagrams("cde", "abc")).toBe(4);
   });
