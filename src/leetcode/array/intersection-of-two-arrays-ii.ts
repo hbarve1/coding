@@ -4,6 +4,7 @@
 
 /* eslint-disable no-plusplus */
 /* eslint-disable no-param-reassign */
+/* eslint @typescript-eslint/default-param-last: ["off"] */
 
 function reduceFn(arr: number[] = [], val: number) {
   if (arr[val]) arr[val] += 1;
